@@ -13,7 +13,7 @@ export default function Signup() {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/create-user", {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -26,6 +26,10 @@ export default function Signup() {
 
     const json = await response.json();
     console.log(json);
+
+    if(!json.sucess){
+      alert("Enter Valid Credentials")
+    }
   };
 
   const onChange = (event) => {
@@ -36,7 +40,7 @@ export default function Signup() {
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label for="name" className="form-label">
+            <label htmlFor="name" className="form-label">
               Name
             </label>
             <input
@@ -48,7 +52,7 @@ export default function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
@@ -62,7 +66,7 @@ export default function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input
@@ -75,7 +79,7 @@ export default function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label for="address" className="form-label">
+            <label htmlFor="address" className="form-label">
               Address
             </label>
             <input
@@ -90,7 +94,7 @@ export default function Signup() {
             Submit
           </button>
           <Link to="/login" className="m-3 btn btn-danger">
-            Already a user
+            Already a user (Log in)
           </Link>
         </form>
       </div>
