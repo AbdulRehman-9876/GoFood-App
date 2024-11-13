@@ -3,6 +3,10 @@ const router = express.Router();
 const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 
+const jwt = require("jsonwebtoken"); //for login
+const bcrypt = require("bcryptjs"); //for password
+const jwtSecret = "secretisgoingtobeverysecretnowhe"
+
 router.post(
   "/create-user",
   body("email").isEmail(),
@@ -13,6 +17,10 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+
+    const salt = await bcrypt.genSalt(10);
+    let securePassword = await bcrypt.hash(req.body.password,salt);
+
     try {
       await User.create({
         //syntax to add data in static mannner
@@ -24,7 +32,7 @@ router.post(
 
         //syntax to add data using json format (in thunderclient for now)
         name: req.body.name,
-        password: req.body.password,
+        password: securePassword, //secure password sent
         email: req.body.email,
         location: req.body.location,
       }).then(res.json({ success: true }));
@@ -54,11 +62,21 @@ router.post(
         return res.status(400).json({ errors: "Incorrect Email" });
       }
 
-      if (req.body.password !== userData.password) {
+      const passwordCompare = await bcrypt.compare(req.body.password,userData.password);
+
+      if (!passwordCompare) {
         return res.status(400).json({ errors: "Incorrect Password" });
       }
 
-      return res.json({ success: true });
+      const data = {
+        user:{
+          id: userData.id
+        }
+      }
+
+      const authToken = jwt.sign(data,jwtSecret);
+
+      return res.json({ success: true,authToken :authToken});
       
     } catch (error) {
       console.log(error);
