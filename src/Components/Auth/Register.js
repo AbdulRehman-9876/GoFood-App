@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import animeFoodWallpaper from "../Assest/animeFoodWallpaper.jpg";
+import animeFoodWallpaper from "../../Assets/animeFoodWallpaper.jpg";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 
