@@ -25,29 +25,29 @@ export default function ImgMediaCard() {
           </Typography>
 
           <TextField
-            id="standard-basic"
+            id="name"
             label="Name"
             variant="standard"
             fullWidth
             sx={{ mb: 2}}
           />
           <TextField
-            id="standard-basic"
+            id="email"
             label="Email"
             variant="standard"
             fullWidth
             sx={{ mb: 2 }}
           />
           <TextField
-            id="standard-basic"
+            id="password"
             label="Password"
             variant="standard"
             fullWidth
             sx={{ mb: 2 }}
           />
           <TextField
-            id="standard-basic"
-            label="Address"
+            id="confirm_password"
+            label="Confirm Password"
             variant="standard"
             fullWidth
             sx={{ mb: 2 }}

@@ -9,7 +9,6 @@ const UserSchema = new Schema({
     },
     location:{
         type: String,
-        required: true
     },
     email:{
         type: String,
@@ -19,7 +18,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    date:{
+    accountCreationDate:{
         type: Date,
         default: Date.now
     }
