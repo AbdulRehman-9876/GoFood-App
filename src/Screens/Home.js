@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Card from "../components/Card";
-import Carousel from "../components/Carousel";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
+import Card from "../Components/Card";
+import Carousel from "../Components/Carousel";
 
 export default function Home() {
   return (
