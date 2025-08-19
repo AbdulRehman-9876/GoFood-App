@@ -1,11 +1,11 @@
-import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import Card from "../Components/Card";
-import Carousel from "../Components/Carousel";
+import Card from "../Components/Food/Card";
+import Carousel from "../Components/Food/Carousel";
 
 export default function Home() {
   return (
+    <>
     <div>
       <div>
         <Navbar />
@@ -22,9 +22,9 @@ export default function Home() {
       </div>
 
       <div>
-        {" "}
-        <Footer />{" "}
+        <Footer />
       </div>
     </div>
+    </>
   );
 }

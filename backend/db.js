@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb+srv://abdulrehman9876:kpwlM63jCUOYhgLd@cluster0.km0gw.mongodb.net/gofoodmern?retryWrites=true&w=majority&appName=Cluster0';
+require("dotenv").config();
+const MONGO_URI = process.env.MONGO_URI
 
 const mongoDB = async () => {
     try {
-        await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-        console.log("Connected Successfully");
+        await mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+        console.log("MongoDB Connected Successfully");
 
         // Fetch data after confirming the connection
         fetchData();
