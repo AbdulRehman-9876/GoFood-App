@@ -1,10 +1,10 @@
 import "./App.css";
-import Home from "./Screens/Home";
+import Home from "./Views/Home.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./Screens/Login";
+import Login from "./Components/Auth/Login.js";
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
-import Register from "./Screens/Register.js"
+import Register from "./Components/Auth/Register.js"
 function App() {
   return (
     <Router>
