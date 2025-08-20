@@ -14,7 +14,6 @@ const UserSchema = new Schema({
   profilePicture: {
     data: Buffer,
     contentType: String,
-    required: false,
   },
   location: {
     type: String,

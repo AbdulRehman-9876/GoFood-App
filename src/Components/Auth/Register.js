@@ -8,8 +8,11 @@ import Typography from "@mui/material/Typography";
 import animeFoodWallpaper from "../../Assets/animeFoodWallpaper.jpg";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
+import { useNavigate } from "react-router";
 
 export default function ImgMediaCard() {
+  const navigate = useNavigate();
+
   return (
     <Container maxWidth="sm">
       <Card sx={{ maxWidth: 900, mt: 10, borderRadius: 4 }}>
@@ -19,7 +22,7 @@ export default function ImgMediaCard() {
           height="140"
           image={animeFoodWallpaper}
         />
-        <Container sx={{mt:2}}>
+        <Container sx={{ mt: 2 }}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               Register
@@ -68,11 +71,16 @@ export default function ImgMediaCard() {
             color="success"
             size="large"
             variant="contained"
-            sx={{ ml: 22, mb: 3, width: 150, height:40, borderRadius: 3 }}
+            sx={{ ml: 22, mb: 3, width: 150, height: 40, borderRadius: 3 }}
           >
             Submit
           </Button>
-          <Button size="small" variant="text" sx={{ ml: 3, mb: 3 }}>
+          <Button
+            size="small"
+            variant="text"
+            onClick={() => navigate("/login")}
+            sx={{ ml: 3, mb: 3 }}
+          >
             Already a User
           </Button>
         </CardActions>

@@ -7,8 +7,9 @@ import Typography from "@mui/material/Typography";
 import animeFoodWallpaper from "../../Assets/loginAnimeFoodWallpaper.jpg";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
-
+import { useNavigate } from "react-router";
 export default function ImgMediaCard() {
+  const navigate = useNavigate();
   return (
     <Container maxWidth="sm">
       <Card sx={{ maxWidth: 800, mt: 16, borderRadius: 4 }}>
@@ -53,6 +54,7 @@ export default function ImgMediaCard() {
             size="small"
             variant="text"
             sx={{ ml: 3, mb: 3}}
+           onClick={() => navigate("/register")}
           >
             Dont have an account?
           </Button>

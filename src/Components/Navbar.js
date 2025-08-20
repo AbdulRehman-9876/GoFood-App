@@ -48,7 +48,7 @@ function ResponsiveAppBar() {
   const handleMenuClick = (path) => {
     if (path === "/logout") {
       // clear token
-      localStorage.removeItem("token");
+      localStorage.removeItem("authToken");
       // redirect to login
       navigate("/login");
     } else {
