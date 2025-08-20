@@ -55,9 +55,8 @@ function ResponsiveAppBar() {
       navigate(path);
     }
   };
-  const COLOR_SCHEME = process.env.REACT_APP_APPLICATION_THEME;
   return (
-    <AppBar position="static" sx={{ backgroundColor: COLOR_SCHEME }}>
+    <AppBar position="absolute" color="transparent" elevation={0}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <FastfoodIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
