@@ -2,6 +2,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import video from "../../Assets/anime_cooking.mp4"
+const COLORS = process.env.REACT_APP_APPLICATION_THEME
 export default function Carousel() {
   return (
     <Swiper loop autoplay={{ delay: 4000 }}>
@@ -23,7 +24,7 @@ export default function Carousel() {
               zIndex: -1,
                filter: "brightness(50%)"
             }}
-          >
+          > 
             <source src={video} type="video/mp4" />
           </video>
 
@@ -46,7 +47,7 @@ export default function Carousel() {
             </Typography>
             <Button
               variant="contained"
-              sx={{ mt: 3, backgroundColor: "#25a244" }}
+              sx={{ mt: 3, backgroundColor: COLORS }}
             >
               Order Now
             </Button>

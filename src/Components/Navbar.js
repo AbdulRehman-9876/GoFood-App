@@ -11,9 +11,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import FastfoodIcon from '@mui/icons-material/Fastfood';
+import FastfoodIcon from "@mui/icons-material/Fastfood";
 import { useNavigate } from "react-router-dom";
-import profilePic from "../Assets/Anime_Pfp.jpeg"
+import profilePic from "../Assets/Anime_Pfp.jpeg";
+import Badge from "@mui/material/Badge";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
+
 const pages = ["Products", "About us"];
 const token = true;
 const settings = token
@@ -52,9 +55,9 @@ function ResponsiveAppBar() {
       navigate(path);
     }
   };
-const COLOR_SCHEME = process.env.REACT_APP_APPLICATION_THEME;
+  const COLOR_SCHEME = process.env.REACT_APP_APPLICATION_THEME;
   return (
-    <AppBar position="static" sx={{backgroundColor:COLOR_SCHEME}} >
+    <AppBar position="static" sx={{ backgroundColor: COLOR_SCHEME }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <FastfoodIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -141,12 +144,23 @@ const COLOR_SCHEME = process.env.REACT_APP_APPLICATION_THEME;
               </Button>
             ))}
           </Box>
+            <IconButton
+              size="inherit"
+              aria-label="show 4 new mails"
+              color="inherit"
+              sx={{mr:2}}
+            >
+              <Badge badgeContent={4} color="error">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Profile Pic" src={profilePic} /> {/*Profile Pic*/}
               </IconButton>
             </Tooltip>
+          
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
