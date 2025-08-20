@@ -14,13 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import { useNavigate } from "react-router-dom";
 import profilePic from "../Assets/Anime_Pfp.jpeg"
-const pages = ["Products", "Pricing"];
-const token = null;
+const pages = ["Products", "About us"];
+const token = true;
 const settings = token
   ? [
       { label: "Profile", path: "/profile" },
-      { label: "Account", path: "/account" },
-      { label: "Dashboard", path: "/dashboard" },
       { label: "Logout", path: "/logout" },
     ]
   : [{ label: "Login", path: "/login" }];
@@ -54,8 +52,9 @@ function ResponsiveAppBar() {
       navigate(path);
     }
   };
+const COLOR_SCHEME = process.env.REACT_APP_APPLICATION_THEME;
   return (
-    <AppBar position="static" className="bg-success">
+    <AppBar position="static" sx={{backgroundColor:COLOR_SCHEME}} >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <FastfoodIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

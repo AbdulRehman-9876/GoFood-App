@@ -8,7 +8,7 @@ import Rating from '@mui/material/Rating';
 
 export default function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 345, mt:3 }}>
+    <Card sx={{ maxWidth: 345, mt:3, borderRadius: 6 }}>
       <CardActionArea>
         <CardMedia
           component="img"

@@ -1,79 +1,60 @@
-import React from "react";
-
+import { Box, Typography, Button } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import video from "../../Assets/anime_cooking.mp4"
 export default function Carousel() {
   return (
-    <div>
-      <div
-        id="carouselExampleFade"
-        className="carousel slide carousel-fade"
-        data-bs-ride="carousel"
-      >
-        <div className="carousel-inner" id="carousel" style={{objectFit:"contain !important"}}>
-          <div className="carousel-caption" style={{zIndex:"10"}}>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success text-white bg-sucess" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
+    <Swiper loop autoplay={{ delay: 4000 }}>
+      {/* Slide 1 with video */}
+      <SwiperSlide>
+        <Box sx={{ position: "relative", height: "100vh", overflow: "hidden" }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              zIndex: -1,
+               filter: "brightness(50%)"
+            }}
+          >
+            <source src={video} type="video/mp4" />
+          </video>
 
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src="/photos/burger.jpg"
-                className="d-block  w-100"
-                style={{filter: "brightness(40%)"}} alt="..." 
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="/photos/pizza.jpg "
-                className="d-block w-100"
-                style={{filter: "brightness(40%)"}}
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="/photos/Shawarma.avif"
-                className="d-block w-100"
-                style={{filter: "brightness(40%)"}}
-                alt="..."
-              />
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="prev"
+          {/* Overlay Content */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              color: "white",
+            }}
           >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-    </div>
+            <Typography variant="h3" fontWeight="bold">
+              Fresh & Hot Meals
+            </Typography>
+            <Typography variant="subtitle1" sx={{ mt: 2 }}>
+              Delivered straight from the kitchen to your door.
+            </Typography>
+            <Button
+              variant="contained"
+              sx={{ mt: 3, backgroundColor: "#25a244" }}
+            >
+              Order Now
+            </Button>
+          </Box>
+        </Box>
+      </SwiperSlide>
+
+      {/* You can add more SwiperSlide components with different videos */}
+    </Swiper>
   );
 }
