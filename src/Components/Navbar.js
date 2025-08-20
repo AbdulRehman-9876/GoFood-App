@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import { useNavigate } from "react-router-dom";
-
+import profilePic from "../Assets/Anime_Pfp.jpeg"
 const pages = ["Products", "Pricing"];
 const token = null;
 const settings = token
@@ -145,7 +145,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Profile Pic" src={profilePic} /> {/*Profile Pic*/}
               </IconButton>
             </Tooltip>
             <Menu
