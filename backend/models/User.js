@@ -7,6 +7,11 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  profilePicture: {
+    data: Buffer,
+    contentType: String,
+    required: false,
+  },
   location: {
     type: String,
   },
