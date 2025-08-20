@@ -7,7 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET
 
 const registerUser = async () => {
   try {
-    const { email, name, password } = req.body;
+    const { email, name, password, number } = req.body;
     const salt = await bcrypt.genSalt(10);
     let securePassword = await bcrypt.hash(password, salt);
 
@@ -15,6 +15,7 @@ const registerUser = async () => {
       name: name,
       email: email,
       password: securePassword,
+      mobileNumber: number
     });
 
     await newUser.save();

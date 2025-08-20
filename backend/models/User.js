@@ -7,6 +7,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  mobileNumber:{
+    type: String,
+    required: true,
+  },
   profilePicture: {
     data: Buffer,
     contentType: String,
