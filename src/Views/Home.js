@@ -2,29 +2,40 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Card from "../Components/Food/Card";
 import Carousel from "../Components/Food/Carousel";
+import Grid from "@mui/material/Grid";
+import { Container } from "react-bootstrap";
 
 export default function Home() {
   return (
     <>
-    <div>
       <div>
         <Navbar />
-      </div>
+        
+                <Carousel />
 
-      <div>
-        <Carousel />
-      </div>
+        <Grid container spacing={2} sx={{ml:20}}>
+          <Grid size={4}>
+            <Card />
+          </Grid>
+          <Grid size={4}>
+            <Card />
+          </Grid>
+          <Grid size={4}>
+            <Card />
+          </Grid>
+          <Grid size={4}>
+            <Card />
+          </Grid>
+          <Grid size={4}>
+            <Card />
+          </Grid>
+          <Grid size={4}>
+            <Card />
+          </Grid>
+        </Grid>
 
-      <div className="m-3">
-        <Card />
-        <Card />
-        <Card />
-      </div>
-
-      <div>
         <Footer />
       </div>
-    </div>
     </>
   );
 }

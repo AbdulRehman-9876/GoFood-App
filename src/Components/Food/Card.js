@@ -1,40 +1,30 @@
-import React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import CardActionArea from "@mui/material/CardActionArea";
+import foodItem from "../../Assets/roast_food.webp";
 
-export default function Card() {
+export default function ActionAreaCard() {
   return (
-    <div>
-      <div>
-        {" "}
-        <div
-          className="card mt-3"
-          style={{ width: "18rem", maxHeigh: "360px" }}
-        >
-          <img src="https://assets.bonappetit.com/photos/5b919cb83d923e31d08fed17/1:1/w_2240,c_limit/basically-burger-1.jpg" className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">This is random text.</p>
-            <div className="container w-100">
-              <select className="m-2 h-100 bg-success rounded">
-                {Array.from(Array(6), (e, i) => {
-                  return (
-                    <option key={i + 1} value={i + 1}>
-                      {" "}
-                      {i + 1}{" "}
-                    </option>
-                  );
-                })}
-              </select>
-
-              <select className="m-2 h-100 bg-success rounded">
-                <option value="half"> Half </option>
-                <option value="full"> Full </option>
-              </select>
-
-              <div className="d-inline h-100 fs-5">Total Price</div>
-            </div>
-          </div>
-        </div>{" "}
-      </div>
-    </div>
+    <Card sx={{ maxWidth: 345, mt:3 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="200"
+          image={foodItem}
+          alt="Food Item"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Roast Beef
+          </Typography>
+          <Typography variant="body2" sx={{ color: "text.secondary" }}>
+            Tender, juicy roasted beef, slow-cooked to perfection and bursting
+            with rich, savory flavor.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 }
