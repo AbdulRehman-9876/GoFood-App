@@ -29,7 +29,7 @@ const navbarPicture = token ? userData.profilePicture : pic //conditional pictur
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
+    <Container maxWidth="md" sx={{ py: 4, mt:5 }}>
       {/* Profile Picture Section */}
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 4 }}>
         <Avatar

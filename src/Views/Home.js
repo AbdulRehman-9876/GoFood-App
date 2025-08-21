@@ -7,9 +7,6 @@ import Grid from "@mui/material/Grid";
 export default function Home() {
   return (
     <>
-      <div>
-        <Navbar />
-
         <Carousel />
 
         <Grid container spacing={2} sx={{ ml: 20 }}>
@@ -32,9 +29,6 @@ export default function Home() {
             <Card />
           </Grid>
         </Grid>
-
-        <Footer />
-      </div>
     </>
   );
 }

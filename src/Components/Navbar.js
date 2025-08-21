@@ -160,7 +160,7 @@ function ResponsiveAppBar() {
               </Badge>
             </IconButton>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title={`Hi ${userData.name}`}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Profile Pic" src={navbarPicture} /> {/*Profile Pic*/}
               </IconButton>
