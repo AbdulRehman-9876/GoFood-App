@@ -59,7 +59,10 @@ function ResponsiveAppBar() {
     }
   };
   return (
-    <AppBar position="absolute" color="transparent" elevation={0}>
+    <AppBar position="absolute" color="transparent" elevation={0} sx={{
+        background: "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.5), rgba(0,0,0,0))",
+        boxShadow: "none", // removes default shadow
+      }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <FastfoodIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
