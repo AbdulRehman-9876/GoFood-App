@@ -9,16 +9,16 @@ export const registerUser = async (userData) => {
   }
 };
 
-export const loginUser = async (userData) => {
+export const loginUser = async (data) => {
   try {
     const response = await axios.post(
       "http://localhost:5000/api/login",
-      userData
+      data
     );
 
-    console.log(response.data);
     localStorage.setItem("authToken", response.data.authToken); //Setting Session Token
-    localStorage.setItem("userData", response.data.userData); //Setting Session User Data
+    localStorage.setItem("userData", JSON.stringify(response.data.userData)); //Setting Session User Data
+
     return response.data;
   } catch (err) {
     console.log(`Error in fetching login api ${err}`);

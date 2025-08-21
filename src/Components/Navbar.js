@@ -13,11 +13,12 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import { useNavigate } from "react-router-dom";
-import profilePic from "../Assets/Anime_Pfp.jpeg";
+import profilePic from "../Assets/defaultImage.jpg";
 import Badge from "@mui/material/Badge";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
 const pages = ["Products", "About us"];
+const userData = JSON.parse(localStorage.getItem("userData")); //get user data
 const token = localStorage.getItem("authToken") || false;
 const settings = token
   ? [
@@ -157,7 +158,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Profile Pic" src={profilePic} /> {/*Profile Pic*/}
+                <Avatar alt="Profile Pic" src={userData.profilePicture} /> {/*Profile Pic*/}
               </IconButton>
             </Tooltip>
           

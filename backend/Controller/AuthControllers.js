@@ -30,6 +30,11 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const userData = await User.findOne({ email });
+
+    if (!userData) {
+      return res.status(400).json({ errors: "User not found" });
+    }
+
     const passwordCompare = await bcrypt.compare(password, userData.password);
     if (!passwordCompare) {
       return res.status(400).json({ errors: "Incorrect Password" });
@@ -39,19 +44,23 @@ const loginUser = async (req, res) => {
       expiresIn: "1h",
     });
 
-    return res.json({ authToken, userData: {
-    name: userData.name, 
-    mobileNumber: userData.mobileNumber,
-    email: userData.email,
-    profilePicture: userData.profilePicture,
-    location: userData.location,
-    accountCreationDate: userData.accountCreationDate
-    } });
+    return res.json({
+      authToken,
+      userData: {
+        name: userData.name,
+        mobileNumber: userData.mobileNumber,
+        email: userData.email,
+        profilePicture: userData.profilePicture,
+        location: userData.location,
+        accountCreationDate: userData.accountCreationDate,
+      },
+    });
   } catch (err) {
+    console.error(err);
     res.json({ success: false });
-    console.log(err);
   }
 };
+
 
 module.exports = {
   registerUser,

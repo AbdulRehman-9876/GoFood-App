@@ -12,12 +12,13 @@ import {
 } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { useState } from "react";
-import pic from "../../Assets/Anime_Pfp.jpeg"
+import pic from "../../Assets/defaultImage.jpg"
 const COLOR = process.env.REACT_APP_APPLICATION_THEME;
 
 export default function Profile() {
   const [profilePic, setProfilePic] = useState(pic);
-
+const userData = JSON.parse(localStorage.getItem("userData")); //get user data
+  console.log(userData.name, "asdasdasd")
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       setProfilePic(URL.createObjectURL(e.target.files[0]));
@@ -29,7 +30,7 @@ export default function Profile() {
       {/* Profile Picture Section */}
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 4 }}>
         <Avatar
-          src={profilePic}
+          src={userData.profilePicture}
           sx={{ width: 130, height: 130, mb: 2, border: `3px solid ${COLOR}` }}
         />
         <label htmlFor="upload-profile-pic">
@@ -57,13 +58,13 @@ export default function Profile() {
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label="Name" defaultValue="John Doe" />
+              <TextField fullWidth label="Name" defaultValue={userData.name} />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label="Email" defaultValue="john@example.com" />
+              <TextField fullWidth label="Email" defaultValue={userData.email} />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label="Phone Number" defaultValue="+1234567890" />
+              <TextField fullWidth label="Phone Number" defaultValue={userData.mobileNumber} />
             </Grid>
           </Grid>
           <Button
@@ -84,7 +85,7 @@ export default function Profile() {
           <TextField
             fullWidth
             label="Delivery Address"
-            defaultValue="123 Main Street, City"
+            defaultValue={userData.location}
             multiline
             rows={2}
           />
