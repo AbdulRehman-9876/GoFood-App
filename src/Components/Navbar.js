@@ -18,7 +18,7 @@ import Badge from "@mui/material/Badge";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
 const pages = ["Products", "About us"];
-const token = true;
+const token = localStorage.getItem("authToken");
 const settings = token
   ? [
       { label: "Profile", path: "/profile" },

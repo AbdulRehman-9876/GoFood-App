@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); //for login
 require("dotenv").config();
 
-const JWT_SECRET = process.env.JWT_SECRET
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const registerUser = async (req, res) => {
   try {
@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
       name: name,
       email: email,
       password: securePassword,
-      mobileNumber: number
+      mobileNumber: number,
     });
 
     await newUser.save();
@@ -32,16 +32,14 @@ const loginUser = async (req, res) => {
     const userData = await User.findOne({ email });
     const passwordCompare = await bcrypt.compare(password, userData.password);
     if (!passwordCompare) {
-      return res.status(400).json({ success: false, errors: "Incorrect Password" });
+      return res.status(400).json({ errors: "Incorrect Password" });
     }
-    const data = {
-      user: {
-        id: userData.id,
-      },
-    };
-    const authToken = jwt.sign(data, JWT_SECRET);
 
-    return res.json({ success: true, authToken: authToken });
+    const authToken = jwt.sign({ id: userData.id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    return res.json({ authToken });
   } catch (err) {
     res.json({ success: false });
     console.log(err);
@@ -50,5 +48,5 @@ const loginUser = async (req, res) => {
 
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
 };
