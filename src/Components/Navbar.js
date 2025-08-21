@@ -20,6 +20,7 @@ import ShoppingCart from "@mui/icons-material/ShoppingCart";
 const pages = ["Products", "About us"];
 const userData = JSON.parse(localStorage.getItem("userData")); //get user data
 const token = localStorage.getItem("authToken") || false;
+const navbarPicture = token ? userData.profilePicture : profilePic //conditional picture rendering
 const settings = token
   ? [
       { label: "Profile", path: "/profile" },
@@ -158,7 +159,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Profile Pic" src={userData.profilePicture} /> {/*Profile Pic*/}
+                <Avatar alt="Profile Pic" src={navbarPicture} /> {/*Profile Pic*/}
               </IconButton>
             </Tooltip>
           

@@ -18,6 +18,9 @@ const COLOR = process.env.REACT_APP_APPLICATION_THEME;
 export default function Profile() {
   const [profilePic, setProfilePic] = useState(pic);
 const userData = JSON.parse(localStorage.getItem("userData")); //get user data
+const token = localStorage.getItem("authToken")
+const navbarPicture = token ? userData.profilePicture : pic //conditional picture rendering
+
   console.log(userData.name, "asdasdasd")
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -30,7 +33,7 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
       {/* Profile Picture Section */}
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 4 }}>
         <Avatar
-          src={userData.profilePicture}
+          src={navbarPicture}
           sx={{ width: 140, height: 140, mb: 2, border: `3px solid ${COLOR}` }}
         />
         <label htmlFor="upload-profile-pic">
