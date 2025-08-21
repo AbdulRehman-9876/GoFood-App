@@ -18,7 +18,7 @@ import Badge from "@mui/material/Badge";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
 const pages = ["Products", "About us"];
-const token = localStorage.getItem("authToken");
+const token = localStorage.getItem("authToken") || false;
 const settings = token
   ? [
       { label: "Profile", path: "/profile" },
@@ -47,8 +47,9 @@ function ResponsiveAppBar() {
   };
   const handleMenuClick = (path) => {
     if (path === "/logout") {
-      // clear token
+      // clear tokens
       localStorage.removeItem("authToken");
+      localStorage.removeItem("userData");
       // redirect to login
       navigate("/login");
     } else {

@@ -17,7 +17,8 @@ export const loginUser = async (userData) => {
     );
 
     console.log(response.data);
-    localStorage.setItem("authToken", response.data.authToken);
+    localStorage.setItem("authToken", response.data.authToken); //Setting Session Token
+    localStorage.setItem("userData", response.data.userData); //Setting Session User Data
     return response.data;
   } catch (err) {
     console.log(`Error in fetching login api ${err}`);

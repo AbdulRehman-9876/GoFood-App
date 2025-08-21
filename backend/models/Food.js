@@ -22,6 +22,9 @@ const FoodSchema = new Schema({
   price: {
     type: String,
     required: true,
+  },
+  rating: {
+    type: String,
   }
 });
 

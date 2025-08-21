@@ -39,7 +39,14 @@ const loginUser = async (req, res) => {
       expiresIn: "1h",
     });
 
-    return res.json({ authToken });
+    return res.json({ authToken, userData: {
+    name: userData.name, 
+    mobileNumber: userData.mobileNumber,
+    email: userData.email,
+    profilePicture: userData.profilePicture,
+    location: userData.location,
+    accountCreationDate: userData.accountCreationDate
+    } });
   } catch (err) {
     res.json({ success: false });
     console.log(err);
