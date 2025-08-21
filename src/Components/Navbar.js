@@ -21,6 +21,7 @@ const pages = ["Products", "About us"];
 const userData = JSON.parse(localStorage.getItem("userData")); //get user data
 const token = localStorage.getItem("authToken") || false;
 const navbarPicture = token ? userData.profilePicture : profilePic //conditional picture rendering
+const name = token ? `Hi, ${userData.name}` : `Kindly login`
 const settings = token
   ? [
       { label: "Profile", path: "/profile" },
@@ -160,7 +161,7 @@ function ResponsiveAppBar() {
               </Badge>
             </IconButton>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title={`Hi ${userData.name}`}>
+            <Tooltip title={name}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Profile Pic" src={navbarPicture} /> {/*Profile Pic*/}
               </IconButton>

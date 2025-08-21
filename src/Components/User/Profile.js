@@ -20,6 +20,8 @@ export default function Profile() {
 const userData = JSON.parse(localStorage.getItem("userData")); //get user data
 const token = localStorage.getItem("authToken")
 const navbarPicture = token ? userData.profilePicture : pic //conditional picture rendering
+const name = token ? `${userData.name}'s Profile` : `My Profile`
+
 
   console.log(userData.name, "asdasdasd")
   const handleImageChange = (e) => {
@@ -49,7 +51,7 @@ const navbarPicture = token ? userData.profilePicture : pic //conditional pictur
           </IconButton>
         </label>
         <Typography variant="h4" sx={{ color: "white", mt: 1 }}>
-          My Profile
+         {name}
         </Typography>
       </Box>
 
