@@ -1,7 +1,7 @@
 // register, login, logout, token handling
 import axios from "axios";
 
-const registerUser = async (userData) => {
+export const registerUser = async (userData) => {
   try {
     axios.post("http://localhost:5000/api/register", userData);
   } catch (err) {
@@ -9,9 +9,9 @@ const registerUser = async (userData) => {
   }
 };
 
-const loginUser = async (userData) => {
+export const loginUser = async (userData) => {
   try {
-    axios.post("http://localhost:5000/api/login", userData);
+    const response = axios.post("http://localhost:5000/api/login", userData);
     const json = await response.json();
     if (!json.success) {
       alert("Enter Valid Credentials");
@@ -20,16 +20,10 @@ const loginUser = async (userData) => {
     if (json.success) {
       localStorage.setItem("authToken", json.authToken);
       console.log(localStorage.getItem("authToken"));
-
       console.log(json);
     }
     
   } catch (err) {
     console.log(`Error in fetching login api ${err}`);
   }
-};
-
-exports = {
-  registerUser,
-  loginUser,
 };

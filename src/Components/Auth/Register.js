@@ -9,9 +9,60 @@ import animeFoodWallpaper from "../../Assets/animeFoodWallpaper.jpg";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router";
+import { registerUser } from "../../Apis/authApi";
 
 export default function ImgMediaCard() {
   const navigate = useNavigate();
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    number: "",
+    password: "",
+    confirm_password: "",
+  });
+
+  const handleValidations = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.name.length <= 0) {
+      alert("name cannot be empty");
+      return false;
+    } else if (!emailRegex.test(formData.email)) {
+      console.log(formData.email);
+      alert("email invalid");
+      return false;
+    } else if (formData.number.length <= 9) {
+      alert("invalid number");
+      return false;
+    } else if (
+      formData.password !== formData.confirm_password ||
+      formData.password.length <= 0 ||
+      formData.confirm_password.length <= 0
+    ) {
+      alert("password don't match");
+      return false;
+    } else {
+      return true;
+    }
+  };
+  const handleRegisteration = async () => {
+    if (!handleValidations()) {
+      return;
+    }
+    try {
+      await registerUser(formData);
+      navigate("/login");
+    } catch (err) {
+      console.log(`Error in fetching register api ${err}`);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
 
   return (
     <Container maxWidth="sm">
@@ -34,6 +85,8 @@ export default function ImgMediaCard() {
               variant="standard"
               fullWidth
               sx={{ mb: 2 }}
+              value={formData.name}
+              onChange={handleChange}
             />
             <TextField
               id="email"
@@ -41,6 +94,8 @@ export default function ImgMediaCard() {
               variant="standard"
               fullWidth
               sx={{ mb: 2 }}
+              value={formData.email}
+              onChange={handleChange}
             />
             <TextField
               id="number"
@@ -48,6 +103,8 @@ export default function ImgMediaCard() {
               variant="standard"
               fullWidth
               sx={{ mb: 2 }}
+              value={formData.number}
+              onChange={handleChange}
             />
             <TextField
               id="password"
@@ -55,6 +112,8 @@ export default function ImgMediaCard() {
               variant="standard"
               fullWidth
               sx={{ mb: 2 }}
+              value={formData.password}
+              onChange={handleChange}
             />
             <TextField
               id="confirm_password"
@@ -62,6 +121,8 @@ export default function ImgMediaCard() {
               variant="standard"
               fullWidth
               sx={{ mb: 1 }}
+              value={formData.confirm_password}
+              onChange={handleChange}
             />
           </CardContent>
         </Container>
@@ -72,6 +133,7 @@ export default function ImgMediaCard() {
             size="large"
             variant="contained"
             sx={{ ml: 22, mb: 3, width: 150, height: 40, borderRadius: 3 }}
+            onClick={handleRegisteration}
           >
             Submit
           </Button>

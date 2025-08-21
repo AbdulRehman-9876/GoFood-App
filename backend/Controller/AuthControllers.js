@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const JWT_SECRET = process.env.JWT_SECRET
 
-const registerUser = async () => {
+const registerUser = async (req, res) => {
   try {
     const { email, name, password, number } = req.body;
     const salt = await bcrypt.genSalt(10);
@@ -19,20 +19,20 @@ const registerUser = async () => {
     });
 
     await newUser.save();
-    res.stats(200).json({ message: "User Successfully Created" });
+    res.status(200).json({ message: "User Successfully Created" });
   } catch (err) {
-    res.stats(400).json({ message: "Error in Creating User" });
+    res.status(400).json({ message: "Error in Creating User" });
     console.log(err);
   }
 };
 
-const loginUser = async () => {
+const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const userData = await User.findOne({ email });
     const passwordCompare = await bcrypt.compare(password, userData.password);
     if (!passwordCompare) {
-      return res.status(400).json({ errors: "Incorrect Password" });
+      return res.status(400).json({ success: false, errors: "Incorrect Password" });
     }
     const data = {
       user: {
