@@ -92,7 +92,7 @@ export default function ImgMediaCard() {
             color="success"
             size="large"
             variant="contained"
-            sx={{ ml: 22, mb: 3, width: 150, height: 40, borderRadius: 3 }}
+            sx={{ ml: 22, mb: 3, width: 150, height: 40, borderRadius: 4 }}
             onClick={handleLogin}
           >
             Submit

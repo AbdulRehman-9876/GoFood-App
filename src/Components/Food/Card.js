@@ -10,11 +10,12 @@ export default function ActionAreaCard() {
   return (
     <Card
       sx={{
-        maxWidth: 345,
+        width:450,
+        ml:-8,
         mt: 3,
         borderRadius: 6,
         "&:hover img": {
-          transform: "scale(1.1)", // zoom in
+          transform: "scale(1.05)", // zoom in
         },
       }}
     >
@@ -29,7 +30,7 @@ export default function ActionAreaCard() {
           }}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 600}}>
             Roasted Beef
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>

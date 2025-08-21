@@ -39,7 +39,7 @@ export default function Carousel() {
               color: "white",
             }}
           >
-            <Typography variant="h3" fontWeight="bold">
+            <Typography variant="h2" fontWeight="bold">
               Fresh & Hot Meals
             </Typography>
             <Typography variant="subtitle1" sx={{ mt: 2 }}>
@@ -47,7 +47,7 @@ export default function Carousel() {
             </Typography>
             <Button
               variant="contained"
-              sx={{ mt: 3, backgroundColor: COLORS }}
+              sx={{ mt: 3, backgroundColor: COLORS, borderRadius: 3 }}
             >
               Order Now
             </Button>
