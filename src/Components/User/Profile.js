@@ -31,7 +31,7 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 4 }}>
         <Avatar
           src={userData.profilePicture}
-          sx={{ width: 130, height: 130, mb: 2, border: `3px solid ${COLOR}` }}
+          sx={{ width: 140, height: 140, mb: 2, border: `3px solid ${COLOR}` }}
         />
         <label htmlFor="upload-profile-pic">
           <input
@@ -45,22 +45,22 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
             <PhotoCamera />
           </IconButton>
         </label>
-        <Typography variant="h5" sx={{ color: "white", mt: 1 }}>
+        <Typography variant="h4" sx={{ color: "white", mt: 1 }}>
           My Profile
         </Typography>
       </Box>
 
       {/* Personal Information Card */}
-      <Card sx={{ mb: 3 }}>
+      <Card sx={{ mb: 3 ,borderRadius:5, padding: 2}}>
         <CardContent>
-          <Typography variant="h6" gutterBottom sx={{ color: COLOR }}>
+          <Typography variant="h6" gutterBottom sx={{ color: COLOR, mb:2,fontWeight: 'bold'}}>
             Personal Information
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField fullWidth label="Name" defaultValue={userData.name} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} sx={{width:270}}>
               <TextField fullWidth label="Email" defaultValue={userData.email} />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -69,7 +69,7 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
           </Grid>
           <Button
             variant="contained"
-            sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 3 }}
+            sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 4 }}
           >
             Save
           </Button>
@@ -77,9 +77,9 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
       </Card>
 
       {/* Address Card */}
-      <Card sx={{ mb: 3 }}>
+      <Card sx={{ mb: 3 ,borderRadius:5, padding: 2}}>
         <CardContent>
-          <Typography variant="h6" gutterBottom sx={{ color: COLOR }}>
+          <Typography variant="h6" gutterBottom sx={{ color: COLOR, mb:2,fontWeight: 'bold'}}>
             Address
           </Typography>
           <TextField
@@ -91,7 +91,7 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
           />
           <Button
             variant="contained"
-            sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 3 }}
+            sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 4 }}
           >
             Save
           </Button>
@@ -99,9 +99,9 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
       </Card>
 
       {/* Payment Method Card */}
-      <Card sx={{ mb: 3 }}>
+      <Card sx={{ mb: 3,borderRadius:5, padding: 2 }}>
         <CardContent>
-          <Typography variant="h6" gutterBottom sx={{ color: COLOR }}>
+          <Typography variant="h6" gutterBottom sx={{ color: COLOR, mb:2,fontWeight: 'bold' }}>
             Payment Method
           </Typography>
           <TextField
@@ -117,7 +117,7 @@ const userData = JSON.parse(localStorage.getItem("userData")); //get user data
           />
           <Button
             variant="contained"
-            sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 3 }}
+            sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 4 }}
           >
             Save
           </Button>
