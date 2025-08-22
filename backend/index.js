@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+require("dotenv").config();
+const PORT = process.env.PORT;
 const mongoDB = require("./db");
 
 mongoDB();
@@ -14,13 +15,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.json({ limit: "30mb" }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
-app.use(express.json());
 app.use("/api", require("./Routes/CreateUser"));
+app.use("/food", require("./Routes/Food"));
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });

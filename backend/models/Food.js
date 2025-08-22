@@ -12,8 +12,8 @@ const FoodSchema = new Schema({
     required: true,
   },
   image: {
-    data: Buffer,
-    contentType: String,
+    type: String,
+    required: true,
   },
   description: {
     type: String,
@@ -25,6 +25,7 @@ const FoodSchema = new Schema({
   },
   rating: {
     type: String,
+    default: "0",
   }
 });
 
