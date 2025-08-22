@@ -3,10 +3,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import foodItem from "../../Assets/roast_food.webp";
 import Rating from "@mui/material/Rating";
 
-export default function ActionAreaCard() {
+export default function ActionAreaCard(props) {
   return (
     <Card
       sx={{
@@ -23,7 +22,7 @@ export default function ActionAreaCard() {
         <CardMedia
           component="img"
           height="200"
-          image={foodItem}
+          image={props.food.image}
           alt="Food Item"
           sx={{
             transition: "transform 0.5s ease", // smooth effect
@@ -31,15 +30,15 @@ export default function ActionAreaCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 600}}>
-            Roasted Beef
+           {props.food.name}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            Tender, juicy roasted beef, slow-cooked to perfection and bursting
-            with rich, savory flavor.
+            {props.food.description}
           </Typography>
           <Rating
             name="read-only"
-            value={4}
+            precision={0.5}
+            value={props.food.rating + 4.5}
             readOnly
             size="small"
             sx={{ mt: 1 }}
