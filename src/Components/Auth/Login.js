@@ -10,9 +10,15 @@ import Container from "@mui/material/Container";
 import { useNavigate } from "react-router";
 import { loginUser } from "../../Apis/authApi";
 import { useState } from "react";
+import IconButton from "@mui/material/IconButton";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import InputAdornment from "@mui/material/InputAdornment";
 
 export default function ImgMediaCard() {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((prev) => !prev);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -68,6 +74,7 @@ export default function ImgMediaCard() {
             </Typography>
 
             <TextField
+              type="email"
               id="email"
               label="Email"
               variant="standard"
@@ -77,6 +84,7 @@ export default function ImgMediaCard() {
               onChange={handleChange}
             />
             <TextField
+              type={showPassword ? "text" : "password"}
               id="password"
               label="Password"
               variant="standard"
@@ -84,6 +92,15 @@ export default function ImgMediaCard() {
               sx={{ mb: 2 }}
               value={formData.password}
               onChange={handleChange}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={handleClickShowPassword} edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </CardContent>
         </Container>

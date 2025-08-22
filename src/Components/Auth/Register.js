@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,9 +10,19 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router";
 import { registerUser } from "../../Apis/authApi";
+import IconButton from "@mui/material/IconButton";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import InputAdornment from "@mui/material/InputAdornment";
 
 export default function ImgMediaCard() {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((prev) => !prev);
+    const handleClickShowConfirmPassword = () => setShowConfirmPassword((prev) => !prev);
+
+
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -89,6 +99,7 @@ export default function ImgMediaCard() {
               onChange={handleChange}
             />
             <TextField
+              type="email"
               id="email"
               label="Email"
               variant="standard"
@@ -98,6 +109,7 @@ export default function ImgMediaCard() {
               onChange={handleChange}
             />
             <TextField
+              type="number"
               id="number"
               label="Phone Number"
               variant="standard"
@@ -107,6 +119,7 @@ export default function ImgMediaCard() {
               onChange={handleChange}
             />
             <TextField
+              type={showPassword ? "text" : "password"}
               id="password"
               label="Password"
               variant="standard"
@@ -114,8 +127,18 @@ export default function ImgMediaCard() {
               sx={{ mb: 2 }}
               value={formData.password}
               onChange={handleChange}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={handleClickShowPassword} edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             <TextField
+              type={showConfirmPassword ? "text" : "password"}
               id="confirm_password"
               label="Confirm Password"
               variant="standard"
@@ -123,6 +146,15 @@ export default function ImgMediaCard() {
               sx={{ mb: 1 }}
               value={formData.confirm_password}
               onChange={handleChange}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={handleClickShowConfirmPassword} edge="end">
+                      {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </CardContent>
         </Container>
