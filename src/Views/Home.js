@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../Components/Food/Card";
-import Carousel from "../Components/Food/Carousel";
+import Carousel from "../Components/Food/HomePageCarousel";
 import Grid from "@mui/material/Grid";
 import { getFood } from "../Apis/foodApi";
 import { Typography } from "@mui/material";

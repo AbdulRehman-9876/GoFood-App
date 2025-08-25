@@ -7,7 +7,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Register from "./Components/Auth/Register.js";
 import Profile from "./Components/User/Profile.js";
 import MainLayout from "./Layouts/MainLayout.js";
-import Resturants from "./Components/Food/Resturants.js";
+import Resturants from "./Components/Food/Restaurants.js";
 import AboutUs from "./Components/Food/AboutUs.js";
 
 function App() {
