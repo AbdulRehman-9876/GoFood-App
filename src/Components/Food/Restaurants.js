@@ -50,7 +50,7 @@ export default function Restaurants() {
       <Box sx={{ p: 3, }}>
         {/* Search Bar */}
         <TextField
-          label="Search Restaurants"
+          label="Search Restaurants"  
           variant="filled"
           
           fullWidth
