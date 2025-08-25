@@ -18,8 +18,10 @@ import Badge from "@mui/material/Badge";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { jwtDecode } from "jwt-decode";
 
-
-const pages = ["Products", "About us"];
+const pages = [
+  { label: "Restaurants", path: "/restaurants" },
+  { label: "About us", path: "/aboutUs" },
+];
 const userToken = jwtDecode(localStorage.getItem("authToken"));
 const navbarPicture = userToken ? userToken.profilePicture : profilePic; //conditional picture rendering
 const name = userToken ? `Hi, ${userToken.name}` : `Kindly login`;
@@ -29,7 +31,7 @@ const settings = userToken
       { label: "Logout", path: "/logout" },
     ]
   : [{ label: "Login", path: "/login" }];
-console.log(userToken); // ✅ now you always have the _id
+console.log(userToken);
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -59,6 +61,9 @@ function ResponsiveAppBar() {
     } else {
       navigate(path);
     }
+  };
+  const handleNavbarLinks = (path) => {
+    navigate(path);
   };
   return (
     <AppBar
@@ -121,8 +126,8 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+                <MenuItem key={page.label} onClick={() => handleNavbarLinks(page.path)}>
+                  <Typography sx={{ textAlign: "center" }}>{page.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -149,11 +154,11 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.label}
+                onClick={() => handleNavbarLinks(page.path)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>
