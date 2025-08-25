@@ -13,17 +13,16 @@ import {
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { useState } from "react";
 import pic from "../../Assets/defaultImage.jpg"
+import { jwtDecode } from "jwt-decode";
 const COLOR = process.env.REACT_APP_APPLICATION_THEME;
 
 export default function Profile() {
   const [profilePic, setProfilePic] = useState(pic);
-const userData = JSON.parse(localStorage.getItem("userData")); //get user data
-const token = localStorage.getItem("authToken")
-const navbarPicture = token ? userData.profilePicture : pic //conditional picture rendering
-const name = token ? `${userData.name}'s Profile` : `My Profile`
+const userToken = jwtDecode(localStorage.getItem("authToken"))
+const navbarPicture = userToken ? userToken.profilePicture : pic //conditional picture rendering
+const name = userToken ? `${userToken.name}'s Profile` : `My Profile`
 
 
-  console.log(userData.name, "asdasdasd")
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       setProfilePic(URL.createObjectURL(e.target.files[0]));
@@ -63,13 +62,13 @@ const name = token ? `${userData.name}'s Profile` : `My Profile`
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label="Name" defaultValue={userData.name} />
+              <TextField fullWidth label="Name" defaultValue={userToken.name} />
             </Grid>
             <Grid item xs={12} sm={6} sx={{width:270}}>
-              <TextField fullWidth label="Email" defaultValue={userData.email} />
+              <TextField fullWidth label="Email" defaultValue={userToken.email} />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label="Phone Number" defaultValue={userData.mobileNumber} />
+              <TextField fullWidth label="Phone Number" defaultValue={userToken.mobileNumber} />
             </Grid>
           </Grid>
           <Button
@@ -90,7 +89,7 @@ const name = token ? `${userData.name}'s Profile` : `My Profile`
           <TextField
             fullWidth
             label="Delivery Address"
-            defaultValue={userData.location}
+            defaultValue={userToken.location}
             multiline
             rows={2}
           />

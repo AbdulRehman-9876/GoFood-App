@@ -40,27 +40,31 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ errors: "Incorrect Password" });
     }
 
-    const authToken = jwt.sign({ id: userData.id }, JWT_SECRET, {
-      expiresIn: "1h",
-    });
-
-    return res.json({
-      authToken,
-      userData: {
+    const authToken = jwt.sign(
+      {
+        _id: userData._id,
         name: userData.name,
         mobileNumber: userData.mobileNumber,
         email: userData.email,
         profilePicture: userData.profilePicture,
         location: userData.location,
         accountCreationDate: userData.accountCreationDate,
+        role: userData.role,
       },
+      JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    return res.json({
+      authToken,
     });
   } catch (err) {
     console.error(err);
     res.json({ success: false });
   }
 };
-
 
 module.exports = {
   registerUser,

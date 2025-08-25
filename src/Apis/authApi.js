@@ -15,7 +15,6 @@ export const loginUser = async (data) => {
     const response = await axios.post(`${URL}/api/login`, data);
 
     localStorage.setItem("authToken", response.data.authToken); //Setting Session Token
-    localStorage.setItem("userData", JSON.stringify(response.data.userData)); //Setting Session User Data
 
     return response.data;
   } catch (err) {

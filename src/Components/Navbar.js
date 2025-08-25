@@ -16,18 +16,20 @@ import { useNavigate } from "react-router-dom";
 import profilePic from "../Assets/defaultImage.jpg";
 import Badge from "@mui/material/Badge";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
+import { jwtDecode } from "jwt-decode";
+
 
 const pages = ["Products", "About us"];
-const userData = JSON.parse(localStorage.getItem("userData")); //get user data
-const token = localStorage.getItem("authToken") || false;
-const navbarPicture = token ? userData.profilePicture : profilePic //conditional picture rendering
-const name = token ? `Hi, ${userData.name}` : `Kindly login`
-const settings = token
+const userToken = jwtDecode(localStorage.getItem("authToken"));
+const navbarPicture = userToken ? userToken.profilePicture : profilePic; //conditional picture rendering
+const name = userToken ? `Hi, ${userToken.name}` : `Kindly login`;
+const settings = userToken
   ? [
       { label: "Profile", path: "/profile" },
       { label: "Logout", path: "/logout" },
     ]
   : [{ label: "Login", path: "/login" }];
+console.log(userToken); // ✅ now you always have the _id
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -50,9 +52,8 @@ function ResponsiveAppBar() {
   };
   const handleMenuClick = (path) => {
     if (path === "/logout") {
-      // clear tokens
+      // clear userTokens
       localStorage.removeItem("authToken");
-      localStorage.removeItem("userData");
       // redirect to login
       navigate("/login");
     } else {
@@ -60,10 +61,16 @@ function ResponsiveAppBar() {
     }
   };
   return (
-    <AppBar position="absolute" color="transparent" elevation={0} sx={{
-        background: "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.5), rgba(0,0,0,0))",
+    <AppBar
+      position="absolute"
+      color="transparent"
+      elevation={0}
+      sx={{
+        background:
+          "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.5), rgba(0,0,0,0))",
         boxShadow: "none", // removes default shadow
-      }}>
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <FastfoodIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -150,23 +157,24 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-            <IconButton
-              size="inherit"
-              aria-label="show 4 new mails"
-              color="inherit"
-              sx={{mr:2}}
-            >
-              <Badge badgeContent={4} color="error">
-                <ShoppingCart />
-              </Badge>
-            </IconButton>
+          <IconButton
+            size="inherit"
+            aria-label="show 4 new mails"
+            color="inherit"
+            sx={{ mr: 2 }}
+          >
+            <Badge badgeContent={4} color="error">
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title={name}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Profile Pic" src={navbarPicture} /> {/*Profile Pic*/}
+                <Avatar alt="Profile Pic" src={navbarPicture} />{" "}
+                {/*Profile Pic*/}
               </IconButton>
             </Tooltip>
-          
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"

@@ -24,8 +24,8 @@ const FoodSchema = new Schema({
     required: true,
   },
   rating: {
-    type: String,
-    default: "0",
+    type: Number,
+    default: 0,
   }
 });
 
