@@ -26,7 +26,12 @@ const FoodSchema = new Schema({
   rating: {
     type: Number,
     default: 0,
-  }
+  },
+  restaurantId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Restaurant", // references the Restaurant model
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("food", FoodSchema);
