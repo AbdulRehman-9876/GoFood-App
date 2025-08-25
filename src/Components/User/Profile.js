@@ -127,6 +127,32 @@ const name = userToken ? `${userToken.name}'s Profile` : `My Profile`
           </Button>
         </CardContent>
       </Card>
+
+       {/* Password Change Card */}
+      <Card sx={{ mb: 3,borderRadius:5, padding: 2 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom sx={{ color: COLOR, mb:2,fontWeight: 'bold' }}>
+            Change Password
+          </Typography>
+          <TextField
+            fullWidth
+            type="password"
+            label="Current Password"
+          />
+          <TextField
+            type="password"
+            fullWidth
+            label="New Password"
+            sx={{ mt: 2 }}
+          />
+          <Button
+            variant="contained"
+            sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 4 }}
+          >
+            Save  
+          </Button>
+        </CardContent>
+      </Card>
     </Container>
   );
 }
