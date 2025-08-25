@@ -62,13 +62,13 @@ const name = userToken ? `${userToken.name}'s Profile` : `My Profile`
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label="Name" defaultValue={userToken.name} />
+              <TextField fullWidth label="Name" defaultValue={userToken.name}/>
             </Grid>
             <Grid item xs={12} sm={6} sx={{width:270}}>
               <TextField fullWidth label="Email" defaultValue={userToken.email} />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label="Phone Number" defaultValue={userToken.mobileNumber} />
+              <TextField fullWidth label="Phone Number" defaultValue={userToken.mobileNumber}  />
             </Grid>
           </Grid>
           <Button
