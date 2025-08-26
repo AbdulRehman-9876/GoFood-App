@@ -12,11 +12,11 @@ const Register = lazy(() => import("./Components/Auth/Register.js"));
 const Profile = lazy(() => import("./Components/User/Profile.js"));
 const Restaurants = lazy(() => import("./Components/Food/Restaurants.js"));
 const AboutUs = lazy(() => import("./Components/Food/AboutUs.js"));
-
+const LoadingPage = lazy(() => import("./Components/LoadingPage.js"));
 function App() {
   return (
     <Router>
-      <Suspense fallback={<p>Loading page...</p>}>
+      <Suspense fallback={<LoadingPage/>}>
         <Routes>
           <Route element={<MainLayout />}>
             <Route  path="/" element={<Home />}></Route>

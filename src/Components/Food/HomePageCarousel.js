@@ -47,7 +47,7 @@ export default function Carousel() {
             </Typography>
             <Button
               variant="contained"
-              sx={{ mt: 3, backgroundColor: COLORS, borderRadius: 3 }}
+              sx={{ mt: 3, backgroundColor: COLORS, borderRadius: 3, fontWeight:700}}
             >
               Order Now
             </Button>
