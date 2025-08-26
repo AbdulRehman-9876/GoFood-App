@@ -1,9 +1,9 @@
 import {
-  Avatar,
   Box,
   Button,
   Card,
   CardContent,
+  CardMedia,
   Container,
   Grid,
   TextField,
@@ -12,14 +12,14 @@ import {
 } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { useState } from "react";
-import pic from "../../Assets/defaultImage.jpg";
+import pic from "../../Assets/restaurantPic_2.jpg";
 import { jwtDecode } from "jwt-decode";
 const COLOR = process.env.REACT_APP_APPLICATION_THEME;
 
 export default function RegisterRestaurant() {
   const [profilePic, setProfilePic] = useState(pic);
   const userToken = jwtDecode(localStorage.getItem("authToken"));
-  const navbarPicture = userToken ? userToken.profilePicture : pic; //conditional picture rendering
+  const navbarPicture = pic;
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -38,15 +38,6 @@ export default function RegisterRestaurant() {
             mb: 4,
           }}
         >
-          <Avatar
-            src={navbarPicture}
-            sx={{
-              width: 200,
-              height: 200,
-              mb: 2,
-              border: `3px solid ${COLOR}`,
-            }}
-          />
           <label htmlFor="upload-profile-pic">
             <input
               hidden
@@ -56,14 +47,28 @@ export default function RegisterRestaurant() {
               onChange={handleImageChange}
             />
             <IconButton color="primary" component="span">
-              <PhotoCamera />
+              <PhotoCamera sx={{mb:-55}}/>
             </IconButton>
           </label>
         </Box>
 
         {/* Restaurant Registeration Card */}
-        <Card sx={{ mb: 3, borderRadius: 5, padding: 2 }}>
-          <CardContent>
+        <Card sx={{ mb: 3, borderRadius: 5}}>
+          <CardMedia
+            component="img"
+            image={pic}
+            alt="Food Item"
+            sx={{
+              transition: "transform 0.5s ease", // smooth effect
+              height: {
+                lg: 200,
+                md: 200,
+                sm: 180,
+                xs: 170,
+              },
+            }}
+          />
+          <CardContent sx ={{padding: 4}}>
             <Typography
               variant="h5"
               gutterBottom
@@ -120,7 +125,7 @@ export default function RegisterRestaurant() {
             </Typography>
 
             <Grid container spacing={2}>
-              <Grid  size={{ xs: 12, sm: 6 }}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField fullWidth label="Restaurant name" />
               </Grid>
               <TextField
@@ -138,7 +143,7 @@ export default function RegisterRestaurant() {
             </Grid>
             <Button
               variant="contained"
-              sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 4}}
+              sx={{ mt: 2, mb:2, backgroundColor: COLOR, borderRadius: 4 }}
             >
               Register
             </Button>

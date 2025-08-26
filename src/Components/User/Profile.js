@@ -35,7 +35,7 @@ const name = userToken ? `${userToken.name}'s Profile` : `My Profile`
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 4 }}>
         <Avatar
           src={navbarPicture}
-          sx={{ width: 140, height: 140, mb: 2, border: `3px solid ${COLOR}` }}
+          sx={{ width: 200, height: 200, mb: 2, border: `3px solid ${COLOR}` }}
         />
         <label htmlFor="upload-profile-pic">
           <input
