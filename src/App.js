@@ -1,28 +1,35 @@
 import "./App.css";
-import Home from "./Views/Home.js";
+import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./Components/Auth/Login.js";
+
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-import Register from "./Components/Auth/Register.js";
-import Profile from "./Components/User/Profile.js";
-import MainLayout from "./Layouts/MainLayout.js";
-import Resturants from "./Components/Food/Restaurants.js";
-import AboutUs from "./Components/Food/AboutUs.js";
+
+const Home = lazy (() => import("./Views/Home.js"));
+const MainLayout = lazy(() => import("./Layouts/MainLayout.js"));
+const Login = lazy(() => import("./Components/Auth/Login.js"));
+const Register = lazy(() => import("./Components/Auth/Register.js"));
+const Profile = lazy(() => import("./Components/User/Profile.js"));
+const Restaurants = lazy(() => import("./Components/Food/Restaurants.js"));
+const AboutUs = lazy(() => import("./Components/Food/AboutUs.js"));
+
+
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route exact path="/" element={<Home />}></Route>
-          <Route exact path="/profile" element={<Profile />}></Route>
-          <Route exact path="/restaurants" element={<Resturants />}></Route>
-          <Route exact path="/aboutUs" element={<AboutUs />}></Route>
-        </Route>
-        <Route exact path="/Login" element={<Login />}></Route>
-        <Route exact path="/register" element={<Register />}></Route>
-      </Routes>
+      <Suspense fallback={<p>Loading page...</p>}>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route  path="/" element={<Home />}></Route>
+            <Route  path="/profile" element={<Profile />}></Route>
+            <Route  path="/restaurants" element={<Restaurants />}></Route>
+            <Route  path="/aboutUs" element={<AboutUs />}></Route>
+          </Route>
+          <Route  path="/Login" element={<Login />}></Route>
+          <Route  path="/register" element={<Register />}></Route>
+        </Routes>
+      </Suspense>
     </Router>
   );
 }

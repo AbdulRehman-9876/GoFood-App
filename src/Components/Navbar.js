@@ -22,7 +22,8 @@ const pages = [
   { label: "Restaurants", path: "/restaurants" },
   { label: "About us", path: "/aboutUs" },
 ];
-const userToken = jwtDecode(localStorage.getItem("authToken"));
+const token = localStorage.getItem("authToken") || false
+const userToken = token ? jwtDecode(token) : false;
 const navbarPicture = userToken ? userToken.profilePicture : profilePic; //conditional picture rendering
 const name = userToken ? `Hi, ${userToken.name}` : `Kindly login`;
 const settings = userToken
