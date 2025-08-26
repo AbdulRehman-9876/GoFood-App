@@ -14,7 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import InputAdornment from "@mui/material/InputAdornment";
 
-export default function ImgMediaCard() {
+export default function Register() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -85,8 +85,8 @@ export default function ImgMediaCard() {
         />
         <Container sx={{ mt: 2 }}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Register
+            <Typography gutterBottom variant="h5" component="div" fontWeight={600} textAlign={"center"}>
+              Registeration Page
             </Typography>
 
             <TextField

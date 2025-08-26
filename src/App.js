@@ -13,8 +13,6 @@ const Profile = lazy(() => import("./Components/User/Profile.js"));
 const Restaurants = lazy(() => import("./Components/Food/Restaurants.js"));
 const AboutUs = lazy(() => import("./Components/Food/AboutUs.js"));
 
-
-
 function App() {
   return (
     <Router>

@@ -69,8 +69,8 @@ export default function ImgMediaCard() {
         />
         <Container sx={{ mt: 2 }}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Login
+             <Typography gutterBottom variant="h5" component="div" fontWeight={600} textAlign={"center"}>
+              Login Page
             </Typography>
 
             <TextField
