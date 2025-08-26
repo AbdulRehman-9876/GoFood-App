@@ -1,4 +1,4 @@
-import { Box, Typography, Button} from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import image1 from "../../Assets/restaurantPic_1.png";
@@ -6,11 +6,12 @@ import image2 from "../../Assets/restaurantPic_2.jpg";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
-const COLORS = process.env.REACT_APP_APPLICATION_THEME
-
+import { useNavigate } from "react-router-dom";
+const COLORS = process.env.REACT_APP_APPLICATION_THEME;
 const images = [image1, image2];
 
 export default function Carousel() {
+  const navigate = useNavigate();
   return (
     <Swiper
       modules={[Autoplay, EffectFade]} // ✅ register modules
@@ -63,6 +64,7 @@ export default function Carousel() {
               <Button
                 variant="contained"
                 sx={{ mt: 3, backgroundColor: COLORS, borderRadius: 3 }}
+                onClick={() => navigate("/registerRestaurant")}
               >
                 Register Now
               </Button>
