@@ -55,7 +55,7 @@ export default function Carousel() {
               }}
             >
               <Typography variant="h2" fontWeight="bold">
-                Restaurant Page
+                Restaurants
               </Typography>
               <Typography variant="subtitle1" sx={{ mt: 2 }}>
                 Register your restaurant today and let food lovers discover you!
