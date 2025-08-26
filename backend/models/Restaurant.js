@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
-import image from "../../src/Assets/restaurantPic_2.jpg";
 const RestaurantSchema = new Schema({
   name: {
     type: String,
@@ -13,7 +11,7 @@ const RestaurantSchema = new Schema({
   },
   picture: {
     type: String,
-    default: image,
+    required: true,
   },
   reviews: {
     type: Number,
