@@ -1,11 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button} from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper/modules"; 
+import { Autoplay, EffectFade } from "swiper/modules";
 import image1 from "../../Assets/restaurantPic_1.png";
 import image2 from "../../Assets/restaurantPic_2.jpg";
 
 import "swiper/css";
-import "swiper/css/effect-fade"; 
+import "swiper/css/effect-fade";
+const COLORS = process.env.REACT_APP_APPLICATION_THEME
 
 const images = [image1, image2];
 
@@ -14,7 +15,7 @@ export default function Carousel() {
     <Swiper
       modules={[Autoplay, EffectFade]} // ✅ register modules
       effect="fade" // fade transition
-      autoplay={{ delay:3000, disableOnInteraction: false }}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
       allowTouchMove={false} // disable manual swipe
       loop={true} //  infinite loop
     >
@@ -56,6 +57,15 @@ export default function Carousel() {
               <Typography variant="h2" fontWeight="bold">
                 Restaurant Page
               </Typography>
+              <Typography variant="subtitle1" sx={{ mt: 2 }}>
+                Register your restaurant today and let food lovers discover you!
+              </Typography>
+              <Button
+                variant="contained"
+                sx={{ mt: 3, backgroundColor: COLORS, borderRadius: 3 }}
+              >
+                Register Now
+              </Button>
             </Box>
           </Box>
         </SwiperSlide>

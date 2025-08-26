@@ -65,7 +65,7 @@ const name = userToken ? `${userToken.name}'s Profile` : `My Profile`
               <TextField fullWidth label="Name" defaultValue={userToken.name}/>
             </Grid>
             <Grid item xs={12} sm={6} sx={{width:270}}>
-              <TextField fullWidth label="Email" defaultValue={userToken.email} />
+              <TextField fullWidth label="Email" defaultValue={userToken.email} disabled/>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField fullWidth label="Phone Number" defaultValue={userToken.mobileNumber}  />

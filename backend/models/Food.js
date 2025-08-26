@@ -29,7 +29,7 @@ const FoodSchema = new Schema({
   },
   restaurantId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "restaurant", // references the Restaurant model
+    ref: "Restaurant", // references the Restaurant model
     required: true,
   },
 });
