@@ -3,6 +3,8 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT;
 const mongoDB = require("./db");
+var cors = require('cors')
+app.use(cors())
 
 mongoDB();
 
@@ -20,7 +22,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 app.use("/api", require("./Routes/Auth"));
 app.use("/food", require("./Routes/Food"));
-app.use("/update", require("./Routes/User"));
+app.use("/user", require("./Routes/User"));
 
 
 app.listen(PORT, () => {
