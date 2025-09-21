@@ -26,7 +26,7 @@ export default function Home() {
       <Carousel />
       <Typography variant="h4" sx={{textAlign:"center", mt:3, fontWeight:700}}> Current Favourites</Typography>
       <Grid container spacing={2} sx={{ ml: 20}}  >
-        {foodItems.map((item) => (
+        {foodItems?.map((item) => (
           <Grid size={{xl:4, lg: 4, md: 6, sm: 6, xs: 8}} key={item._id}>
             <Card food={item} />
           </Grid>
