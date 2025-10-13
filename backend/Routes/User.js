@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
+import { updatePersonalInformation } from "../Controller/userController.js";
 const router = express.Router();
-const { updatePersonalInformation } = require("../Controller/userController");
 
 router.patch("/PersonalInformation/:id", updatePersonalInformation);
 
-module.exports = router;
+export default router;

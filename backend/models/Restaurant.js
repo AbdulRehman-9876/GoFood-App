@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
+
 const RestaurantSchema = new Schema({
   name: {
     type: String,
@@ -31,8 +32,8 @@ const RestaurantSchema = new Schema({
     required: true,
   },
   openingHours: {
-    open: {type: String, required: true},
-    close: {type: String, required: true}, // { open: "9:00", close: "22:00" }
+    open: { type: String, required: true },
+    close: { type: String, required: true }, // { open: "9:00", close: "22:00" }
   },
   createdAt: {
     type: Date,
@@ -46,4 +47,4 @@ const RestaurantSchema = new Schema({
   ],
 });
 
-module.exports = mongoose.model("restaurant", RestaurantSchema);
+export default mongoose.model("restaurant", RestaurantSchema);

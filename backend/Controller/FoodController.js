@@ -1,4 +1,4 @@
-const Food = require("../models/Food");
+import Food from "../models/Food.js";
 
 const addFood = async (req, res) => {
   try {
@@ -27,7 +27,5 @@ const getFood = async (req, res) => {
     res.status(400);
   }
 };
-module.exports = {
-  addFood,
-  getFood,
-};
+
+export { addFood, getFood };

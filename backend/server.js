@@ -1,12 +1,18 @@
-const express = require("express");
-const app = express();
-require("dotenv").config();
-const PORT = process.env.PORT;
-const mongoDB = require("./db");
-var cors = require('cors')
-app.use(cors())
+import express from "express";
+import dotenv from "dotenv";
+import mongoDB from "./db.js";
+import cors from "cors";
 
-mongoDB();
+import Auth from "./Routes/Auth.js";
+import Food from "./Routes/Food.js";
+import User from "./Routes/User.js";
+
+dotenv.config();
+
+const PORT = process.env.PORT;
+const app = express();
+app.use(cors());
+mongoDB(); //mongodb connection
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -20,11 +26,11 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: "30mb" }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
-app.use("/api", require("./Routes/Auth"));
-app.use("/food", require("./Routes/Food"));
-app.use("/user", require("./Routes/User"));
-
+//routes 
+app.use("/api", Auth);
+app.use("/food", Food);
+app.use("/user", User);
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`---- Backend listening on port ${PORT} ----`);
 });

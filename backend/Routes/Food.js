@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
+import { addFood, getFood } from "../Controller/FoodController.js";
 const router = express.Router();
-const { addFood, getFood} = require("../Controller/FoodController");
 
 router.post("/addFood", addFood);
 router.get("/getFood",getFood)
 
-module.exports = router;
+export default router;

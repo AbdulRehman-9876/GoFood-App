@@ -1,15 +1,16 @@
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken"); //for login
-require("dotenv").config();
+import User from "../models/User.js";
+import bycrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const registerUser = async (req, res) => {
   try {
     const { email, name, password, number } = req.body;
-    const salt = await bcrypt.genSalt(10);
-    let securePassword = await bcrypt.hash(password, salt);
+    const salt = await bycrypt.genSalt(10);
+    let securePassword = await bycrypt.hash(password, salt);
 
     const newUser = new User({
       name: name,
@@ -66,7 +67,4 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = {
-  registerUser,
-  loginUser,
-};
+export { registerUser, loginUser };
