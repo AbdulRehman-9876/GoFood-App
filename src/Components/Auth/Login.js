@@ -43,7 +43,12 @@ export default function ImgMediaCard() {
       return;
     }
     try {
-      await loginUser(formData);
+      const response = await loginUser(formData);
+      console.log(response);
+      if(!response.sucess){
+        alert("Invalid Credentials");
+        return;
+      }
       navigate("/"); //return to home page if sucessfull
     } catch (err) {
       console.log(`Error fetching login api ${err}`);
