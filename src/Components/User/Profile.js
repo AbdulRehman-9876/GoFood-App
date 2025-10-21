@@ -170,17 +170,22 @@ export default function Profile() {
           >
             Payment Method
           </Typography>
-          <TextField
-            fullWidth
-            label="Card Number"
-            defaultValue="**** **** **** 1234"
-          />
-          <TextField
-            fullWidth
-            label="Expiry Date"
-            defaultValue="12/25"
-            sx={{ mt: 2 }}
-          />
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <TextField
+                fullWidth
+                label="Card Number"
+                defaultValue="**** **** **** 1234"
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <TextField
+                fullWidth
+                label="Expiry Date"
+                defaultValue="12/25"
+              />
+            </Grid>
+          </Grid>
           <Button
             variant="contained"
             sx={{ mt: 2, backgroundColor: COLOR, borderRadius: 4 }}
